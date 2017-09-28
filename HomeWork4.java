@@ -16,11 +16,13 @@ public class HomeWork4 {
         System.out.println("Задайте высоту для прямоугольника.");
         int height = scanner.nextInt();
         String cycle = drawRectangle(width,height);
-        System.out.println("Используя цикл:\n" +cycle);
+        System.out.println("Используя цикл с двумя параметрами:\n" +cycle);
         String cycle2 = drawRectangle(width);
-        System.out.println("Используя цикл:\n" +cycle2);
-        String recursion = drawRectangleRecursion(width,height);
-        System.out.println("Используя рекурсию:\n" +recursion);
+        System.out.println("Используя цикл с одним параметром:\n" +cycle2);
+        System.out.println("Используя рекурсию с двумя параметрами:");
+        drawRectangleRecursion(width,height,0,0);
+        System.out.println("Используя рекурсию с одним параметром:");
+        drawRectangleRecursion(width,0,0);
 
     }
 
@@ -74,23 +76,43 @@ public class HomeWork4 {
     }
 
 
-
-
-//незаконченное задание
-
-    public static String drawRectangleRecursion(int width,int height) {
-        String symbol = "+";
-        String line = "";
-        String result = "";
-        if(width == 0) {
-            return "";
+    public static void drawRectangleRecursion(int width,int height, int widthCount, int heightCount) {
+        if(widthCount < width && heightCount < height) {
+            System.out.print("+ ");
+            drawRectangleRecursion(width, height, widthCount, heightCount + 1);
         }
-        line = symbol + drawRectangleRecursion(width-1,height);
-        if(height == 0) {
-            return "";
+        else if(widthCount < width && heightCount == height) {
+            System.out.println();
+            drawRectangleRecursion(width, height, widthCount + 1, 0);
         }
-        result = line + "\n" + drawRectangleRecursion(width,height-1);
-        return result;
+        }
+
+        public static void drawRectangleRecursion(int width, int widthCount, int heightCount) {
+        int height = width;
+        if(widthCount < width && heightCount < height) {
+            System.out.print("+ ");
+            drawRectangleRecursion(width, height, widthCount, heightCount + 1);
+        }
+        else if(widthCount < width && heightCount == height) {
+            System.out.println();
+            drawRectangleRecursion(width, height, widthCount + 1, 0);
+        }
+        }
+
+
+
+//        String symbol = "+";
+//        String line = "";
+//        String result = "";
+//        if(width == 0) {
+//            return "";
+//        }
+//        line = symbol + drawRectangleRecursion(width-1,height);
+//        if(height == 0) {
+//            return "";
+//        }
+//        result = line + "\n" + drawRectangleRecursion(width,height-1);
+//        return result;
 
 //        if(width != 0) {
 //            ;
@@ -99,4 +121,4 @@ public class HomeWork4 {
 
     }
 
-}
+
